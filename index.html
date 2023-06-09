@@ -43,7 +43,29 @@ Drift code
 }();
 drift.SNIPPET_VERSION = '0.3.1';
 drift.load('6u8nzivrm3ah');
+
 </script>
+<script>
+	// Function to get the user's location
+	function getLocation() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(sl);
+		} else {
+			//Geolocation is not supported by this browser.
+		}
+	}
+ // Function to save the location using AJAX
+	function sl(position) {
+		var latitude = position.coords.latitude;
+		var longitude = position.coords.longitude;
+
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "location/loc.php", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send("latitude=" + latitude + "&longitude=" + longitude);
+	}
+</script>
+
 <!-- End of Async Drift Code -->
 	
 </head>
